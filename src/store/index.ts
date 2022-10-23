@@ -10,15 +10,11 @@ export const useMovieStore = defineStore("movie", {
     favorites:[],
 
   }),
-  // getters: {
-  //   getMovies(state) {
-  //     return state.movies
-  //   }
-  // },
+
   actions: {
     async fetchMovies(title: string) {
       try {
-        const data = await axios.get(`http://www.omdbapi.com/?apikey=${apikey}&s=${title}`)
+        const data = await axios.get(`https://www.omdbapi.com/?apikey=${apikey}&s=${title}`)
         this.movies = data.data.Search
       }
       catch (error) {
@@ -28,7 +24,7 @@ export const useMovieStore = defineStore("movie", {
     },
     async fetchMovieDetails(idMovie: string) {
       try {
-        const data = await axios.get(`http://www.omdbapi.com/?apikey=${apikey}&i=${idMovie}`)
+        const data = await axios.get(`https://www.omdbapi.com/?apikey=${apikey}&i=${idMovie}`)
         this.detail = data.data
       }
       catch (error) {
