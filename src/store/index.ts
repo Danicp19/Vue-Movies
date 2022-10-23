@@ -6,14 +6,15 @@ const apikey = '625c162c'
 export const useMovieStore = defineStore("movie", {
   state: () => ({
     movies: [],
-    detail: []
+    detail: [],
+    favorites:[],
 
   }),
-  getters: {
-    getMovies(state) {
-      return state.movies
-    }
-  },
+  // getters: {
+  //   getMovies(state) {
+  //     return state.movies
+  //   }
+  // },
   actions: {
     async fetchMovies(title: string) {
       try {
@@ -36,7 +37,15 @@ export const useMovieStore = defineStore("movie", {
       }
 
 
+    },
+    addMovieFavorite(payload: any) {
+      return this.favorites = this.favorites.concat(payload)
+    },
+    removeMovieFavorite(id: string) {
+      return this.favorites = this.favorites.filter(movie => movie["id"] !== id)
+
     }
+
 
 
 
